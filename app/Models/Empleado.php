@@ -13,7 +13,8 @@ class Empleado extends Model
         'nombre',
         'correo',
         'edad',
-        'puesto'
+        'puesto',
+        'departamento_id',
     ];
 
     public function Departamento()

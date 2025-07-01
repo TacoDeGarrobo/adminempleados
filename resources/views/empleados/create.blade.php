@@ -30,7 +30,7 @@
         <div>
             <x-input-label for="departamento" :value="__('Departamento')"/>
             <x-text-input id="departamento" class="block mt-1 w-full" type="text" name="departamento" :value="old('departamento')" required autocomplete/>
-          <!--  <x-input-error :message="$errors->get('departamento')" class="mt-2"/> -->
+            <x-input-error :messages="$errors->get('departamento')" class="mt-2"/>
         </div>
 
         <!--Boton de enviar-->

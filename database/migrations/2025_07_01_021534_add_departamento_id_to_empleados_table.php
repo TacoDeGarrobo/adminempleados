@@ -9,20 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('departamentos', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre', 50);
-            $table->timestamps();
-        });
-    }
+    public function up()
+{
+    Schema::table('empleados', function (Blueprint $table) {
+        $table->foreignId('departamento_id')->constrained()->onDelete('cascade');
+    });
+}
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('departamentos');
+        Schema::table('empleados', function (Blueprint $table) {
+            //
+        });
     }
 };

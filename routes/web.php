@@ -11,7 +11,7 @@ Route::get('/', function () {
 });
 
 Route::resource('empleados', App\Http\Controllers\EmpleadoController::class)->middleware('auth');
-Route::resource('departamento', App\Http\Controllers\DepartamentoController::class)->middleware('auth');
+Route::resource('departamentos', App\Http\Controllers\DepartamentoController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,9 +32,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/departamentos', [DepartamentoController::class, 'index'])->name('departamento.department');
     Route::get('/departamento/create', [DepartamentoController::class, 'create']);
-    Route::post('/departamento/create', [DepartamentoController::class, 'store']) ->
-    name('departamento.create');
+    Route::post('/departamento/create', [DepartamentoController::class, 'store']) ->name('departamento.createDepartment');
+    Route::get('/departamento/edit/{id}', [DepartamentoController::class, 'edit '])->name ('departamento.editDepartment');
+    Route::put('/departamento/edit/{id}', [DepartamentoController::class, 'update ']) ->name('departamento.editDepartment');
 });
 
 require __DIR__.'/auth.php';
